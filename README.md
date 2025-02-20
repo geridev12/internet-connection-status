@@ -1,6 +1,3 @@
-
-```
-
 # Internet Connection Status
 
 This project demonstrates how to check the internet connection status using Pigeon without relying on third-party plugins.
@@ -33,12 +30,7 @@ class InternetConnectionApi {
 Run the following command to generate the Pigeon files:
 
 ```sh
-flutter pub run pigeon \
-  --input pigeons/internet_connection_api.dart \
-  --dart_out lib/internet_connection_api.dart \
-  --kotlin_out android/app/src/main/kotlin/com/example/internet_connection_status/InternetConnectionApi.g.kt \
-  --kotlin_package "com.example.internet_connection_status" \
-  --swift_out ios/Runner/InternetConnectionApi.g.swift
+flutter pub run pigeon --input pigeons/internet_connection_api.dart
 ```
 
 ### 4. Implement the API in Android
@@ -46,7 +38,6 @@ flutter pub run pigeon \
 Create `InternetConnectionApiImpl.kt` to implement the API:
 
 ```kotlin
-// filepath: /Users/user/Desktop/internet_connection_status/android/app/src/main/kotlin/com/example/internet_connection_status/InternetConnectionApiImpl.kt
 package com.example.internet_connection_status
 
 import android.content.Context
@@ -67,7 +58,6 @@ class InternetConnectionApiImpl(private val context: Context) : InternetConnecti
 Update `MainActivity.kt` to set up the API:
 
 ```kotlin
-// filepath: /Users/user/Desktop/internet_connection_status/android/app/src/main/kotlin/com/example/internet_connection_status/MainActivity.kt
 package com.example.internet_connection_status
 
 import android.os.Bundle
@@ -91,7 +81,6 @@ class MainActivity: FlutterActivity() {
 Create `InternetConnectionApiImpl.swift` to implement the API:
 
 ```swift
-// filepath: /Users/user/Desktop/internet_connection_status/ios/Runner/InternetConnectionApiImpl.swift
 import Foundation
 import SystemConfiguration
 
@@ -123,7 +112,6 @@ class InternetConnectionApiImpl: InternetConnectionApi {
 Update `AppDelegate.swift` to set up the API:
 
 ```swift
-// filepath: /Users/user/Desktop/internet_connection_status/ios/Runner/AppDelegate.swift
 import Flutter
 import UIKit
 
@@ -150,12 +138,9 @@ import UIKit
 Add the `ACCESS_NETWORK_STATE` permission to `AndroidManifest.xml`:
 
 ```xml
-<!-- filepath: /Users/user/Desktop/internet_connection_status/android/app/src/main/AndroidManifest.xml -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.internet_connection_status">
-    <!-- ...existing code... -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <!-- ...existing code... -->
 </manifest>
 ```
 
@@ -164,7 +149,6 @@ Add the `ACCESS_NETWORK_STATE` permission to `AndroidManifest.xml`:
 Create a provider to use the API in Flutter:
 
 ```dart
-// filepath: /Users/user/Desktop/internet_connection_status/lib/providers/internet_provider.dart
 import 'package:flutter/foundation.dart';
 import 'package:internet_connection_status/internet_connection_api.dart';
 
@@ -181,7 +165,6 @@ class InternetProvider extends ChangeNotifier {
 Create a home page to display the internet connection status:
 
 ```dart
-// filepath: /Users/user/Desktop/internet_connection_status/lib/pages/home_page.dart
 import 'package:flutter/material.dart';
 import 'package:internet_connection_status/providers/internet_provider.dart';
 
@@ -244,13 +227,12 @@ class _InternetStatusMessage extends StatelessWidget {
 Update `main.dart` to use the home page:
 
 ```dart
-// filepath: /Users/user/Desktop/internet_connection_status/lib/main.dart
 import 'package:flutter/material.dart';
 import 'package:internet_connection_status/pages/home_page.dart';
 
 void main() => runApp(const MaterialApp(home: HomePage()));
 ```
 
-### Conclusion
+## Conclusion
 
 By following these steps, you can check the internet connection status in your Flutter app using Pigeon without relying on third-party plugins.
