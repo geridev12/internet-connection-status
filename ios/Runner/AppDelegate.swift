@@ -8,6 +8,12 @@ import UIKit
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
     GeneratedPluginRegistrant.register(with: self)
+    
+    let controller: FlutterViewController = window?.rootViewController as! FlutterViewController
+    let binaryMessenger = controller.binaryMessenger
+    let api = InternetConnectionApiImpl()
+    InternetConnectionApiSetup.setUp(binaryMessenger: binaryMessenger, api: api)
+    
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
 }
